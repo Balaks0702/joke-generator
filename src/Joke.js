@@ -1,0 +1,21 @@
+import React from "react";
+import Button from './Button';
+
+const Joke = () => {
+    const [Joke, setJoke] = React.useState("");
+
+    const renderJoke = () => {
+        fetch("https://sv443.net/jokeapi/v2/joke/Programming?type=single")
+            .then((res) => res.json())
+            .then((data) => setJoke(data.joke));
+    };
+
+    return (
+        <div>
+            <Button callApi={renderJoke} />
+            <p>{Joke}</p>
+        </div>
+    );
+}
+
+export default Joke;
